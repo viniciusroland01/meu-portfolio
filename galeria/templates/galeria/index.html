@@ -1,0 +1,174 @@
+{% extends 'galeria/base.html' %}
+
+{% block content %}
+<main class="flex-grow-1 d-flex align-items-center py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7 text-center text-lg-start mb-5 mb-lg-0">
+                <p class="text-uppercase fw-bold mb-2" style="letter-spacing: 3px; color: var(--primary-blue); font-size: 0.9rem;">
+                    Backend Developer
+                </p>
+                <h1 class="hero-title mb-3">{{ perfil.nome }}</h1>
+                <div class="mb-4">
+                    <span class="subtitle">
+                        <span class="typing-effect">{{ perfil.objetivo }}</span>
+                    </span>
+                </div>
+                <p class="fs-5 mb-4 mx-auto mx-lg-0" style="color: var(--text-muted); max-width: 600px;">
+                    {{ perfil.biografia|linebreaks }}
+                </p>
+                <div class="d-flex justify-content-center justify-content-lg-start">
+                    {% if perfil.curriculo %}
+                        <a href="{{ perfil.curriculo.url }}" download class="btn-primary-custom">Download CV</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-lg-5 text-center">
+                <div class="profile-oval">
+                    {% if perfil.foto %}
+                        <img src="{{ perfil.foto.url }}" alt="Foto" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<section class="py-5" style="border-top: 1px solid #30363d; background-color: rgba(22, 27, 34, 0.3);">
+    <div class="container">
+        <h2 class="text-white fw-bold mb-5 border-bottom border-secondary pb-3 text-center">Habilidades</h2>
+        <div class="row g-4 justify-content-center">
+            
+            <div class="col-6 col-sm-4 col-md-2">
+                <div class="skill-card text-center">
+                    <i class="fab fa-python skill-icon"></i>
+                    <span class="skill-name">Python</span>
+                </div>
+            </div>
+
+            <div class="col-6 col-sm-4 col-md-2">
+                <div class="skill-card text-center">
+                    <i class="fas fa-code-branch skill-icon"></i>
+                    <span class="skill-name">Django</span>
+                </div>
+            </div>
+
+            <div class="col-6 col-sm-4 col-md-2">
+                <div class="skill-card text-center">
+                    <i class="fas fa-database skill-icon"></i>
+                    <span class="skill-name">SQL / SQLite</span>
+                </div>
+            </div>
+
+            <div class="col-6 col-sm-4 col-md-2">
+                <div class="skill-card text-center">
+                    <i class="fab fa-git-alt skill-icon"></i>
+                    <span class="skill-name">Git</span>
+                </div>
+            </div>
+
+            <div class="col-6 col-sm-4 col-md-2">
+                <div class="skill-card text-center">
+                    <i class="fab fa-html5 skill-icon"></i>
+                    <span class="skill-name">HTML5</span>
+                </div>
+            </div>
+
+            <div class="col-6 col-sm-4 col-md-2">
+                <div class="skill-card text-center">
+                    <i class="fab fa-js skill-icon"></i>
+                    <span class="skill-name">JavaScript</span>
+                </div>
+            </div>
+
+            <div class="col-6 col-sm-4 col-md-2">
+                <div class="skill-card text-center">
+                    <i class="fab fa-css3 skill-icon"></i>
+                    <span class="skill-name">CSS3</span>
+                </div>
+            </div>
+
+            <div class="col-6 col-sm-4 col-md-2">
+                <div class="skill-card text-center">
+                    <i class="fab fa-bootstrap skill-icon"></i>
+                    <span class="skill-name">Bootstrap 5</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-white fw-bold mb-5 border-bottom border-secondary pb-3">Projetos em Destaque</h2>
+        <div class="row g-4">
+            {% for projeto in projetos %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-lg" style="background-color: var(--bg-card); border: 1px solid #30363d !important;">
+                    {% if projeto.imagem %}
+                        <img src="{{ projeto.imagem.url }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-white fw-bold">{{ projeto.titulo }}</h5>
+                        <p class="card-text mb-4" style="font-size: 0.9rem; color: #acb2b9;">{{ projeto.descricao }}</p>
+                        
+                        <div class="mt-auto">
+                            <div class="mb-3">
+                                <small style="color: var(--primary-blue); font-weight: bold;">{{ projeto.tecnologias }}</small>
+                            </div> 
+
+                            <div class="d-flex gap-2">
+                                {% if projeto.link_repositorio %}
+                                    <a href="{{ projeto.link_repositorio }}" target="_blank" class="btn-primary-custom text-center flex-fill" style="padding: 10px; font-size: 0.8rem; text-decoration: none;">
+                                        GitHub
+                                    </a>
+                                {% endif %}
+
+                                {% if projeto.link_site %}
+                                    <a href="{{ projeto.link_site }}" target="_blank" class="btn btn-outline-light text-center flex-fill" style="padding: 10px; font-size: 0.8rem; border-radius: 8px; font-weight: 700; border: 1px solid #30363d;">
+                                        Site
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<section class="py-4 bg-opacity-10 bg-secondary" id="contato">
+    <div class="container text-center">
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+            
+            <a href="mailto:{{ perfil.email }}" class="contact-link">
+                <i class="fas fa-envelope contact-icon" style="color: #ea4335;"></i>
+                <span class="d-none d-sm-inline">viniciusroland.dev@outlook.com</span>
+            </a>
+
+            <a href="https://wa.me/5532988366586" target="_blank" class="contact-link">
+                <i class="fab fa-whatsapp contact-icon" style="color: #25d366;"></i>
+                <span class="d-none d-sm-inline">WhatsApp</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/viniciuscardosoroland/" target="_blank" class="contact-link">
+                <i class="fab fa-linkedin contact-icon" style="color: #0077b5;"></i>
+                <span>LinkedIn</span>
+            </a>
+
+            <a href="https://github.com/viniciusroland01" target="_blank" class="contact-link">
+                <i class="fab fa-github contact-icon" style="color: #ffffff;"></i>
+                <span>GitHub</span>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
