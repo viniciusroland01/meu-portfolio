@@ -1,7 +1,7 @@
 # Portfolio | Vinícius Roland
 > Backend Developer Student (ADS)
 
-Este repositório contém meu portfólio profissional desenvolvido com **Django**. O projeto foi construído para ser o hub central das minhas automações e aplicações web.
+Este repositório contém meu portfólio profissional desenvolvido com **Django**. 
 
 ## 🛠 Tech Stack
 - **Core:** Python & Django (MVT)
