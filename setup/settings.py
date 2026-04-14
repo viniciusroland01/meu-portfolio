@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-i4_t#=v!g6&2jg2%*oavm)b=nv8$%d#2)+-qe5y2n9fq&xfzur'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['meu-portfolio-production-4d98.up.railway.app', 'localhost', '127.0.0.1']
 
