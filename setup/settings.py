@@ -8,14 +8,14 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-i4_t#=v!g6&2jg2%*oavm)b=nv8$%d#2)+-qe5y2n9fq&xfzur'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'chave-local-apenas')
 
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['meu-portfolio-production-4d98.up.railway.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://meu-portfolio-production-4d98.up.railway.app',
+     'https://*.onrender.com',
 ]
 
 INSTALLED_APPS = [
